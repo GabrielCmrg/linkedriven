@@ -47,10 +47,8 @@ JOIN schools
 ON schools.id = educations."schoolId"
 JOIN courses
 ON courses.id = educations."courseId"
-JOIN users
-ON users.id = educations."userId"
 JOIN applicants
-ON applicants."userId" = users.id
+ON applicants."userId" = educations."userId"
 JOIN jobs
 ON jobs.id = applicants."jobId"
 JOIN companies
