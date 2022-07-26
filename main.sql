@@ -24,4 +24,4 @@ JOIN courses
 ON courses.id = educations."courseId"
 JOIN schools
 ON schools.id = educations."schoolId"
-WHERE users.id = 30 AND educations.status = 'finished';
+WHERE educations."userId" = 30 AND educations.status = 'finished';
