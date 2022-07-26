@@ -3,7 +3,8 @@
 SELECT users.id, users.name, cities.name AS city
 FROM users
 JOIN cities
-ON users."cityId" = cities.id;
+ON users."cityId" = cities.id
+WHERE cities.name = 'Rio de Janeiro';
 
 -- EXERCÍCIO 2
 
@@ -60,5 +61,5 @@ WHERE applicants."jobId" IN (
     SELECT id FROM roles WHERE "name" = 'Software Engineer'
   )
 )
-AND jobs.active = true
+AND jobs.active = TRUE
 AND companies.id = 10;
