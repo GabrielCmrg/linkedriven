@@ -25,3 +25,16 @@ ON courses.id = educations."courseId"
 JOIN schools
 ON schools.id = educations."schoolId"
 WHERE educations."userId" = 30 AND educations.status = 'finished';
+
+
+-- EXERCÍCIO 4
+
+SELECT users.id, users.name, roles.name AS "role", companies.name AS company, experiences."startDate"
+FROM experiences
+JOIN companies
+ON companies.id = experiences."companyId"
+JOIN roles
+ON roles.id = experiences."roleId"
+JOIN users
+ON users.id = experiences."userId"
+WHERE experiences."userId" = 50 AND experiences."endDate" IS NULL;
