@@ -38,3 +38,29 @@ ON roles.id = experiences."roleId"
 JOIN users
 ON users.id = experiences."userId"
 WHERE experiences."userId" = 50 AND experiences."endDate" IS NULL;
+
+-- BONUS
+
+SELECT schools.id, schools.name AS school, courses.name AS course, companies.name AS company, roles.name AS "role"
+FROM educations
+JOIN schools
+ON schools.id = educations."schoolId"
+JOIN courses
+ON courses.id = educations."courseId"
+JOIN users
+ON users.id = educations."userId"
+JOIN applicants
+ON applicants."userId" = users.id
+JOIN jobs
+ON jobs.id = applicants."jobId"
+JOIN companies
+ON companies.id = jobs."companyId"
+JOIN roles
+ON roles.id = jobs."roleId"
+WHERE applicants."jobId" IN (
+  SELECT id FROM jobs WHERE "roleId" = (
+    SELECT id FROM roles WHERE "name" = 'Software Engineer'
+  )
+)
+AND jobs.active = true
+AND companies.id = 10;
